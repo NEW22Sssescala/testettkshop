@@ -13,7 +13,6 @@
     header h1 { color: #fff; font-size: 18px; font-weight: 700; }
     .logo { color: #fff; font-size: 20px; font-weight: 900; margin-right: auto; }
 
-    .container { max-width: 640px; margin: 0 auto; padding: 20px 16px 100px; }
 
     .empty { text-align: center; padding: 60px 20px; }
     .empty-icon { font-size: 64px; margin-bottom: 16px; }
@@ -46,8 +45,12 @@
 
     .frete-badge { display: flex; align-items: center; gap: 6px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 8px 12px; margin-bottom: 16px; font-size: 13px; color: #15803d; font-weight: 600; }
 
-    .sticky-checkout { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #f0f0f0; padding: 12px 20px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
-    .sticky-checkout .btn-primary { font-size: 17px; padding: 16px; border-radius: 14px; }
+    .sticky-checkout { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #f0f0f0; padding: 10px 20px 14px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
+    .sticky-checkout .btn-primary { font-size: 17px; padding: 16px; border-radius: 14px; margin-bottom: 8px; }
+    .payment-icons { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .payment-icons span { font-size: 11px; color: #aaa; margin-right: 4px; }
+    .payment-badge { background: #f5f5f5; border: 1px solid #e8e8e8; border-radius: 5px; padding: 2px 7px; font-size: 11px; font-weight: 700; color: #555; letter-spacing: .3px; }
+    .container { max-width: 640px; margin: 0 auto; padding: 20px 16px 160px; }
   </style>
 </head>
 <body>
@@ -63,6 +66,14 @@
 
 <div class="sticky-checkout" id="checkout-bar" style="display:none;">
   <button class="btn-primary" onclick="goCheckout()">Finalizar Compra →</button>
+  <div class="payment-icons">
+    <span>Pague com</span>
+    <span class="payment-badge">PIX</span>
+    <span class="payment-badge">VISA</span>
+    <span class="payment-badge">MASTER</span>
+    <span class="payment-badge">ELO</span>
+    <span class="payment-badge">BOLETO</span>
+  </div>
 </div>
 
 <script>
@@ -183,7 +194,7 @@
 
   function clearCart() {
     if (confirm('Remover todos os itens?')) {
-      localStorage.removeItem('cart');
+      localStorage.removeItem(CART_KEY);
       render();
     }
   }
